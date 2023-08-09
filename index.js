@@ -15,6 +15,17 @@ const makePoemHTML = (poemResponse) => {
   const em = pipe(makeTag('em'), makeTag('h3'))(`by ${author}`)
   const stanzas = lines.join('\n').split('\n\n')
   //  the split, join, and map functions to separate stanzas, insert breaklines
+  /*
+  Notes:
+
+  const makeStanazs = lines =>
+  lines
+  .join ('<br/>')
+  .split ('<br/><br/>')
+  .map(makeTag('p'))
+  .join('')
+
+  */
   // each stanza in <p>stanzaLines<br>stanzaLines</p>
   const pStanzas = stanzas.map(stanza => makeTag('p')(stanza.split('\n').join('<br>')))
   const poemHTML = [h2, em, ...pStanzas].join('')
